@@ -1,0 +1,118 @@
+<head>
+  <script src="https://c.webfontfree.com/c.js?f=Solomon-Sans-Book" type="text/javascript"></script>
+  <meta name="viewport" content="width=500, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css">
+</head>
+<html>
+
+<div class="calculator">
+  <div id="displayMonitor" style="width:100%; display: flex;
+    flex-direction: column-reverse;
+    justify-content: flex-start; text-align: right;">
+  </div>
+  <div class="operators">
+    <div class="wrapper">
+      <div class="main">
+        <button id="clean" class="red" onclick="clearFunction()">c</button>
+      </div>
+    </div>
+    <div class="wrapper">
+      <div class="main">
+        <button id="cleanLast" class="decrease red" onclick="clearLast()">ce</button>
+      </div>
+    </div>
+    <div class="wrapper">
+      <div class="main">
+        <button id="precentange button" value="%" class="green" onclick="myFunction()">%</button>
+      </div>
+    </div>
+    <div class="wrapper">
+      <div class="main">
+        <button id="add" class="sign green" value="+" onclick="myFunction()">+</button>
+      </div>
+    </div>
+    <div class="wrapper">
+      <div class="main">
+        <button onclick="myFunction()" value="7" id="number">7</button>
+      </div>
+    </div>
+    <div class="wrapper">
+      <div class="main">
+        <button onclick="myFunction()" value="8" id="number8">8</button>
+      </div>
+    </div>
+    <div class="wrapper">
+      <div class="main">
+        <button onclick="myFunction()" value="9" id="number9" name="9">9</button>
+      </div>
+    </div>
+    <div class="wrapper">
+      <div class="main">
+        <button id="subtract button" class="sign green" value="-" onclick="myFunction()">-</button>
+      </div>
+    </div>
+    <div class="wrapper">
+      <div class="main">
+        <button onclick="myFunction()" value="4" id="number">4</button>
+      </div>
+    </div>
+    <div class="wrapper">
+      <div class="main">
+        <button onclick="myFunction()" value="5" id="number">5</button>
+      </div>
+    </div>
+    <div class="wrapper">
+      <div class="main">
+        <button onclick="myFunction()" value="6" id="number">6</button>
+      </div>
+    </div>
+    <div class="wrapper">
+      <div class="main">
+        <button id="multiply button" class="green" value="*" onclick="myFunction()">×</button>
+      </div>
+    </div>
+    <div class="wrapper">
+      <div class="main">
+        <button onclick="myFunction()" value="1" id="number">1</button>
+      </div>
+    </div>
+    <div class="wrapper">
+      <div class="main">
+        <button onclick="myFunction()" value="2" id="number">2</button>
+      </div>
+    </div>
+    <div class="wrapper">
+      <div class="main">
+        <button onclick="myFunction()" value="3" id="number">3</button>
+      </div>
+    </div>
+    <div class="wrapper2">
+      <div class="main">
+        <button id="divide" class="sign green" value="/" onclick="myFunction()">÷</button>
+      </div>
+    </div>
+    <div class="wrapper">
+      <div class="main">
+        <button id="dot button" value="." onclick="myFunction()">•</button>
+      </div>
+    </div>
+    <div class="wrapper">
+      <div class="main">
+        <button onclick="myFunction()" value="0" id="number">0</button>
+      </div>
+    </div>
+    <div class="wrapper2" style="grid-column: 3/span 2;">
+      <div class="main">
+        <button id="result" onclick="result()">=</button>
+      </div>
+    </div>
+  </div>
+
+<input type="text" id="display" name="myInput">
+  <p id="historyButton"></p>
+
+  <div id="historyAccess"><a id="toClose">histórico</a></div>
+</div>
+<i class="bi bi-trash"></i>
+<script src="logic.js"></script>
+</html>
