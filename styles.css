@@ -63,7 +63,7 @@ button:active{
     border:none;
     background-color:transparent;
     text-align:end;
-    margin:5px;
+    margin:10px 10px 15px 10px;
 }
 p{
     font-size:28px;
