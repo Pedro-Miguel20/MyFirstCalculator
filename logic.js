@@ -1,129 +1,98 @@
 var numero;
 var position;
-/** @type {Array} */
 var toSubtract = [];
-/** @type {Array} */
 var numeros = [];
-/** @type {number} */
 var currentFont = 40;
-/** @type {Array} */
 var hisvalues = [];
+
 /**
- * @param {?} dataAndEvents
- * @param {?} deepDataAndEvents
- * @return {?}
+ * Limpa o display e o array de números.
  */
 function clearFunction(dataAndEvents, deepDataAndEvents) {
-  return document.getElementById("display").value = "", numeros.length = 0, dataAndEvents;
+  document.getElementById("display").value = "";
+  numeros.length = 0;
+  return dataAndEvents;
 }
+
 /**
- * @return {undefined}
+ * Remove o último valor inserido do display e do array de números.
  */
 function clearLast() {
   numeros.pop();
   document.getElementById("display").value = numeros.join("");
 }
+
 /**
- * @param {?} arg1
- * @param {?} a
- * @param {?} b
- * @param {?} args
- * @param {?} dataAndEvents
- * @param {?} message
- * @return {undefined}
+ * Adiciona o valor do botão clicado ao display e ao array de números.
  */
 function myFunction(arg1, a, b, args, dataAndEvents, message) {
   var copies = event.target.value;
   numeros.push(copies);
   document.getElementById("display").value = numeros.join("");
 }
+
 /**
- * @param {?} property
- * @param {?} object
- * @param {?} chain
- * @param {?} a3
- * @return {undefined}
+ * Calcula e exibe o resultado da expressão inserida.
  */
 function result(property, object, chain, a3) {
   /**
-   * @return {undefined}
+   * Adiciona o valor atual ao histórico.
    */
   function display() {
     document.querySelector("#historyAccess").appendChild(result);
     result.textContent = document.getElementById("display").value;
     hisvalues.push(result.textContent);
   }
-  /** @type {number} */
+
   var o = 0;
-  /** @type {number} */
   var equal = 0;
-  /** @type {string} */
   document.getElementById("display").style.height = "50px";
-  /** @type {(HTMLElement|null)} */
   var historyAccess = document.getElementById("historyAccess");
-  /** @type {Element} */
   var result = document.createElement("p");
-  if (1 === document.getElementById("historyAccess").childElementCount && display(), hisvalues.includes(document.getElementById("display").value) || display(), result.addEventListener("click", function(dataAndEvents) {
-    numeros = (result = event.target.textContent).split("");
-    document.getElementById("display").value = numeros.join("");
-    /** @type {string} */
-    document.querySelector("#historyAccess").style.height = "50px";
-    /** @type {string} */
-    document.querySelector("#historyAccess").style.position = "relative";
-    /** @type {string} */
-    document.getElementById("toClose").textContent = "hist\u00f3rico";
-    /** @type {string} */
-    document.querySelector("#historyAccess").style.overflow = "hidden";
-  }), document.getElementById("historyButton").textContent = document.getElementById("display").value, document.getElementById("historyButton").onclick = function(evt) {
-    /** @type {string} */
-    document.querySelector("#historyAccess").style.height = "100%";
-    /** @type {string} */
-    document.querySelector("#historyAccess").style.overflow = "overlay";
-    /** @type {string} */
-    document.querySelector("#historyAccess").style.position = "fixed";
-    /** @type {string} */
-    document.getElementById("toClose").textContent = "voltar";
-  }, document.getElementById("toClose").onclick = function(evt) {
-    /** @type {string} */
-    document.querySelector("#historyAccess").style.height = "50px";
-    /** @type {string} */
-    document.querySelector("#historyAccess").style.overflow = "hidden";
-    /** @type {string} */
-    document.querySelector("#historyAccess").style.position = "relative";
-    /** @type {string} */
-    document.getElementById("toClose").textContent = "hist\u00f3rico";
-  }, numeros.includes("%")) {
+
+  if (document.getElementById("historyAccess").childElementCount === 1 && display(), 
+      hisvalues.includes(document.getElementById("display").value) || display(), 
+      result.addEventListener("click", function(dataAndEvents) {
+        numeros = event.target.textContent.split("");
+        document.getElementById("display").value = numeros.join("");
+        document.querySelector("#historyAccess").style.height = "50px";
+        document.querySelector("#historyAccess").style.position = "relative";
+        document.getElementById("toClose").textContent = "histórico";
+        document.querySelector("#historyAccess").style.overflow = "hidden";
+      }), 
+      document.getElementById("historyButton").textContent = document.getElementById("display").value, 
+      document.getElementById("historyButton").onclick = function(evt) {
+        document.querySelector("#historyAccess").style.height = "100%";
+        document.querySelector("#historyAccess").style.overflow = "overlay";
+        document.querySelector("#historyAccess").style.position = "fixed";
+        document.getElementById("toClose").textContent = "voltar";
+      }, 
+      document.getElementById("toClose").onclick = function(evt) {
+        document.querySelector("#historyAccess").style.height = "50px";
+        document.querySelector("#historyAccess").style.overflow = "hidden";
+        document.querySelector("#historyAccess").style.position = "relative";
+        document.getElementById("toClose").textContent = "histórico";
+      }, 
+      numeros.includes("%")) {
     if (numeros.includes("-")) {
-      /** @type {string} */
       numeros[numeros.indexOf("-")] = "*";
-      /** @type {string} */
       numeros[numeros.indexOf("%")] = "/100";
-      /** @type {*} */
       var value = document.getElementById("display").value = eval(numeros.join(""));
       toSubtract = numeros.slice(0, numeros.indexOf("*"));
-      /** @type {number} */
       document.getElementById("display").value = eval(toSubtract.join("")) - value;
+    } else if (numeros.includes("+")) {
+      numeros[numeros.indexOf("+")] = "*";
+      numeros[numeros.indexOf("%")] = "/100";
+      value = document.getElementById("display").value = eval(numeros.join(""));
+      toSubtract = numeros.slice(0, numeros.indexOf("*"));
+      document.getElementById("display").value = eval(toSubtract.join("")) + value;
     } else {
-      if (numeros.includes("+")) {
-        /** @type {string} */
-        numeros[numeros.indexOf("+")] = "*";
-        /** @type {string} */
-        numeros[numeros.indexOf("%")] = "/100";
-        /** @type {*} */
-        value = document.getElementById("display").value = eval(numeros.join(""));
-        toSubtract = numeros.slice(0, numeros.indexOf("*"));
-        /** @type {(number|string)} */
-        document.getElementById("display").value = eval(toSubtract.join("")) + value;
-      } else {
-        /** @type {string} */
-        numeros[numeros.indexOf("%")] = "*";
-        numeros.push(toString(document.getElementById("display").value = eval(numeros.join("")) / 100));
-      }
+      numeros[numeros.indexOf("%")] = "*";
+      numeros.push(document.getElementById("display").value = eval(numeros.join("")) / 100);
     }
   }
+
   var source = document.getElementById("display").value;
-  /** @type {number} */
   numeros.length = 0;
   numeros.push(document.getElementById("display").value = eval(source));
 }
-;
